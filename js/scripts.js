@@ -40,14 +40,22 @@ AddressBook.prototype.deleteContact = function(id) {
 }
 
 // Business Logic for Contacts ---------
-function Contact(firstName, lastName, phoneNumber, email, homeAddress) {
+function Contact(firstName, lastName, phoneNumber, Address) {
   this.firstName = firstName,
   this.lastName = lastName,
-  this.phoneNumber = phoneNumber
-  this.email = email
-  this.homeAddress = homeAddress
-  
+  this.phoneNumber = phoneNumber,
+  this.Address = Address
+  // this.email = email
+  // this.homeAddress = homeAddress
 }
+function Address(firstAddress, secondAddress, thirdAddress, fourthAddress){
+  this.firstAddress = firstAddress,
+  this.secondAddress = secondAddress,
+  this.thirdAddress = thirdAddress,
+  this.fourthAddress = fourthAddress
+}
+
+
 // puts contact info together
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
@@ -58,7 +66,7 @@ Contact.prototype.fullName = function() {
 var addressBook = new AddressBook();
 // puts contact details into list format
 function displayContactDetails(addressBookToDisplay) {
-
+//this displays the contacts name to be clicked for more info
   var contactsList = $("ul#contacts");
   var htmlForContactInfo = "";
   addressBookToDisplay.contacts.forEach(function(contact) {
@@ -73,8 +81,9 @@ function showContact(contactId) {
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
-  $('.email').html(contact.email);
-  $('.homeAddress').html(contact.homeAddress);
+  $('.address').html(contact.Address);
+  // $('.email').html(contact.email);
+  // $('.homeAddress').html(contact.homeAddress);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class ='deleteButton' id =" + + contact.id + ">Delete</button>");
@@ -98,17 +107,42 @@ $(document).ready(function() {
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
     var inputtedPhoneNumber = $("input#new-phone-number").val();
-    var inputtedEmail = $('input#email').val();
-    var inputtedHomeAddress = $('input#homeAddress').val();
+    // var inputtedEmail =
+    // $('input#email').val();
+    // var inputtedHomeAddress = $('input#homeAddress').val();
+    $('input#Address').val();
+    var inputtedFirstAddressType = $('input#firstAddress').val();
+    var inputtedSecondAddress = $('input#secondAddress').val();
+    var inputtedThirdAddress = $('input#thirdAddress').val();
+    var inputtedFourthAddress = $('input#fourthAddress').val();
+    //pulled class id and plugged into output
+    var firstType = $('#firstType').val();
+    var secondType = $('#secondType').val();
+    var thirdType = $('#thirdType').val();
+    var fourthType = $('#fourthType').val();
+
+
+    var address= new Address(inputtedFirstAddressType, inputtedSecondAddress, inputtedThirdAddress, inputtedFourthAddress);
+    console.log(address);
+    $("#address").append("<li>"+ firstType +" "+ address.firstAddress+ "<br>" +secondType +" "+address.secondAddress+ "<br>" +thirdType +" "+address.thirdAddress+ "<br>" +fourthType +" "+address.fourthAddress+ "</li>")
 
   // clears user-input fields
-   $("input#new-first-name").val("");
-   $("input#new-last-name").val("");
-   $("input#new-phone-number").val("");
-   $('input#email').val("");
-   $('input#homeAddress').val("");
+  $("form")[0].reset();
+   // $("input#new-first-name").val("");
+   // $("input#new-last-name").val("");
+   // $("input#new-phone-number").val("");
+   // $('input#email').val("");
+   // $('input#homeAddress').val("");
+   // $('input#firstAddressn').val("");
+   // $('input#secondAddressn').val("");
+   // $('input#thirdAddressn').val("");
+   // $('input#fourthAddressn').val("");
 
-    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, inputtedHomeAddress);
+
+
+
+    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, Address);
+    // var newAddress = new Address(inputtedFirstAddressType, inputtedSecondAddress, inputtedThirdAddress, inputtedFourthAddress)
     addressBook.addContact(newContact);
     displayContactDetails(addressBook);
   })

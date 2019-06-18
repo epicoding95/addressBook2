@@ -28,13 +28,52 @@
             <input type="text"  class="form-control" id="new-phone-number">
           </div>
           <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="text"  class="form-control" id="email">
+            <label for="firstAddress">Address</label>
+            <select class="form-control" id="firstType">
+               <option></option>
+              <option>Home Address</option>
+              <option>Work Address</option>
+              <option>Personal Email</option>
+              <option>Work Email</option>
+            </select>
+            <input type="text"  class="form-control" id="firstAddress">
           </div>
           <div class="form-group">
+            <label for="secondAddress"></label>
+            <select class="form-control" id="secondType">
+              <option>Home Address</option>
+              <option>Work Address</option>
+              <option>Personal Email</option>
+              <option>Work Email</option>
+            </select>
+            <input type="text"  class="form-control" id="secondAddress">
+          </div>
+          <div class="form-group">
+            <label for="thirdAddress"></label>
+            <select class="form-control" id="thirdType">
+              <option>Home Address</option>
+              <option>Work Address</option>
+              <option>Personal Email</option>
+              <option>Work Email</option>
+            </select>
+            <input type="text"  class="form-control" id="thirdAddress">
+          </div>
+          <div class="form-group">
+            <label for="fourthAddress"></label>
+            <select class="form-control" id="fourthType">
+              <option>Home Address</option>
+              <option>Work Address</option>
+              <option>Personal Email</option>
+              <option>Work Email</option>
+            </select>
+            <input type="text"  class="form-control" id="fourthAddress">
+          </div>
+
+
+          <!-- <div class="form-group">
             <label for="homeAddress">Home Address</label>
             <input type="text"  class="form-control" id="homeAddress">
-          </div>
+          </div> -->
           <button type="submit" class="btn-danger">Add</button>
         </form>
         <hr>
@@ -47,8 +86,11 @@
           <p>First Name: <span class="first-name"></span></p>
           <p>Last Name: <span class="last-name"></span></p>
           <p>Phone Number: <span class="phone-number"></span></p>
-          <p>Email: <span class="email"></span></p>
-          <p>Home Address: <span class="homeAddress"></span></p>
+          <ul id="address">
+            <!-- <span class="Address"></span> -->
+          </ul>
+          <!-- <p>Email: <span class="email"></span></p>
+          <p>Home Address: <span class="homeAddress"></span></p> -->
           <div id="buttons">
           </div>
         </div>
